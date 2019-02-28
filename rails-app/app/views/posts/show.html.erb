@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>ユーザ名:</strong>
+  <%= @post.username %>
+</p>
+
+<p>
+  <strong>タイトル:</strong>
+  <%= @post.title %>
+</p>
+
+<strong>画像:</strong>
+<% if @post.image.attached? %>
+  <%= image_tag @post.image, :size => '300x200' %>
+<% else %>
+  <%= image_tag url_for('noimage.png'), :size => '300x200' %>
+<% end %>
+
+<p>
+  <strong>場所:</strong>
+  <%= @post.place %>
+</p>
+
+<p>
+  <strong>金額:</strong>
+  <%= @post.price %>円
+</p>
+
+<p>
+  <strong>所要時間（分）:</strong>
+  <%= @post.times %> 分
+</p>
+
+<p>
+  <strong>出発地:</strong>
+  <%= @post.from %>
+</p>
+
+<p>
+  <strong>目的地:</strong>
+  <%= @post.to %>
+</p>
+
+<% if user_signed_in? %>
+  <% if @post.username == current_user.username %>
+    <%= link_to '編集', edit_post_path(@post) %> |
+  <% end %>
+<% end %>
+<%= link_to '戻る', posts_path %>

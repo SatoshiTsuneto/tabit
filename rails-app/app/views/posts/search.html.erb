@@ -1,0 +1,16 @@
+<h1>条件を指定して検索</h1>
+<%= form_tag action: :result do %>
+  <div class="field">
+    <%= label_tag :place, '場所：' %>
+    <%= text_field_tag :place, '東京' %>
+  </div>
+  <div class="field">
+    <%= label_tag :price, '最高金額：' %>
+    <%= number_field_tag :price, 0, min: 0 %> 円
+  </div>
+  <div class="field">
+    <%= label_tag :times, '最大所要時間（分）：' %>
+    <%= number_field_tag :times, 0, min: 0 %> 分
+  </div>
+  <%= submit_tag '検索' %>
+<% end %>

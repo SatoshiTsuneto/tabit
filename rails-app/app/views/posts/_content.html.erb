@@ -1,0 +1,12 @@
+<td><%= post.username %></td>
+<td><%= post.title %></td>
+<% if post.image.attached? %>
+  <td><%= image_tag post.image, :size => '300x200' %></td>
+<% else %>
+  <td><%= image_tag url_for('noimage.png'), :size => '300x200' %></td>
+<% end %>
+<td><%= post.place %></td>
+<td><%= post.price %>円</td>
+<td><%= post.times %></td>
+<td><%= post.from %></td>
+<td><%= post.to %></td>

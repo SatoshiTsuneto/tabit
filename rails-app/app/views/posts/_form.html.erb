@@ -1,0 +1,52 @@
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title, 'タイトル' %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image, '画像' %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :place, '場所' %>
+    <%= form.text_field :place %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price, '金額' %>
+    <%= form.number_field :price, min: 0 %> 円
+  </div>
+
+  <div class="field">
+    <%= form.label :times, '所要時間（分）' %>
+    <%= form.number_field :times, min: 0 %> 分
+  </div>
+
+  <div class="field">
+    <%= form.label :from, '出発地' %>
+    <%= form.text_field :from %>
+  </div>
+
+  <div class="field">
+    <%= form.label :to, '目的地' %>
+    <%= form.text_field :to %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "投稿する" %>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tabit</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+<nav>
+  <%= link_to 'ホーム', posts_path, class: 'top_bar' %>
+  <%= link_to '検索', posts_search_path, class: 'top_bar' %>
+  <% if user_signed_in? %>
+    <%= link_to '新規投稿', new_post_path, class: 'top_bar' %>
+    <%= link_to '自分の投稿', posts_list_path, class: 'top_bar' %>
+    <%= link_to 'プロフィール変更', edit_user_registration_path, class: 'top_bar' %>
+    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'top_bar' %>
+  <% else %>
+    <%= link_to 'サインアップ', new_user_registration_path, class: 'top_bar' %>
+    <%= link_to 'ログイン', new_user_session_path, class: 'top_bar' %>
+  <% end %>
+</nav>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<%= yield %>
+</body>
+</html>
